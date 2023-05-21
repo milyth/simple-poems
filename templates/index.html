@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Poems</title>
+
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+</head>
+
+<style>
+  :root {
+    font-family: 'Inter', sans-serif;
+    --bg: #191724;
+    --bg-alt: #1f1d2e;
+    --outline: #908caa;
+    --text: #e0def4;
+  }
+
+  @supports (font-variation-settings: normal) {
+    :root {
+      font-family: 'Inter var', sans-serif;
+    }
+  }
+
+  html {
+    background-color: var(--bg);
+    color-scheme: dark;
+  }
+
+  #title {
+    color: var(--text);
+    font-size: 20pt;
+    text-align: center;
+  }
+
+  #poems {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 20px
+  }
+
+  .card {
+    margin: 10px;
+    background-color: var(--bg-alt);
+    border-color: var(--outline);
+    color: var(--text);
+    padding: 0.6em;
+    filter: drop-shadow(0 0 0.18rem var(--outline));
+  }
+
+  .card-author {
+    text-align: center;
+    color: var(--text);
+  }
+
+  .card-title {
+    text-align: center;
+    color: var(--text);
+  }
+</style>
+
+<body>
+  <h1 id="title"> Simple Poems </h1>
+
+  <div id="poems">
+    {% for poem in poems %}
+    <div class="card">
+      <h3 class="card-title">{{poem.title}}</h3>
+      <h5 class="card-author">{{poem.author}}</h5>
+
+      <p class="card-body">
+        {{poem.content}}
+      </p>
+    </div>
+    {% endfor %}
+  </div>
+</body>
+
+</html>

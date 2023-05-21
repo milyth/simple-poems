@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Poems</title>
+
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+</head>
+
+<style>
+  :root {
+    font-family: 'Inter', sans-serif;
+    --bg: #191724;
+    --bg-alt: #1f1d2e;
+    --outline: #908caa;
+    --text: #e0def4;
+  }
+
+  @supports (font-variation-settings: normal) {
+    :root {
+      font-family: 'Inter var', sans-serif;
+    }
+  }
+
+  html {
+    background-color: var(--bg);
+    color-scheme: dark;
+  }
+
+  #title {
+    color: var(--text);
+    font-size: 20pt;
+    text-align: center;
+  }
+
+
+  #the-form {
+    display: flex;
+    margin: 10px;
+    background-color: var(--bg-alt);
+    border-color: var(--outline);
+    color: var(--text);
+    padding: 0.6em;
+    filter: drop-shadow(0 0 0.18rem var(--outline));
+    flex-direction: column;
+    min-height: 100%;
+  }
+
+  #form-title {
+    color: var(--text);
+  }
+
+
+  #form-submit {
+    background: none;
+    outline: none;
+    border: 1px 1px var(--outline);
+    cursor: pointer;
+    font-size: 22px;
+    font-style: normal;
+    text-align: center;
+    color: #eb6f92;
+  }
+
+
+  .form-item {
+    background: none;
+    outline: none;
+    border: none;
+    font-size: 22px;
+    font-style: normal;
+    text-align: center;
+    color: var(--text);
+  }
+</style>
+
+<body>
+  <h1 id="title"> Simple Poems </h1>
+
+  <form method="get" id="the-form" action="/_upload">
+    <input required class="form-item" placeholder="Título" name="title" />
+    <input required class="form-item" placeholder="Autor" name="author" />
+    <textarea required class="form-item" name="content">
+    </textarea>
+
+    <input type="submit" value="ENVIAR" id="form-submit">
+  </form>
+
+</body>
+
+</html>
