@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "simple-poems"
+version = "0.1.0"
+description = ""
+authors = ["Moizes J. Sousa <milyth@duck.com>"]
+readme = "README.md"
+packages = [{include = "simple_poems"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = {extras = ["all"], version = "^0.95.2"}
+
+
+[tool.poetry.group.dev.dependencies]
+uvicorn = {extras = ["standard"], version = "^0.22.0"}
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
