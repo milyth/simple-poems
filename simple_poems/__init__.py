@@ -1,12 +1,12 @@
-from fastapi import FastAPI, HTTPException, Response, status
-from aiosqlite import IntegrityError
+from fastapi import FastAPI, HTTPException
 from dotenv import load_dotenv
 from os import getenv
-from .world import database, insertPoem,  listPoems
-from .schemas import Poem
+from .world import database
+from .routes import router
 
 app = FastAPI()
 load_dotenv()
+
 
 @app.on_event("startup")
 async def startup():
@@ -26,27 +26,4 @@ async def defaultExcHandler(request, exc):
     }
     
                              
-@app.get("/api/v1/list")
-async def list():
-    """
-    Lists all stored poems
-    """
-
-    poems = await listPoems()
-    return {'status': 'ok', 'code': 200, 'poems': poems}
-
-@app.post("/api/v1/push", status_code=201)
-async def push(poem: Poem, response: Response):
-    """
-    Inserts a poem into server
-    """
-
-    try:
-        await insertPoem(poem)
-        return {'status': 'ok', 'code': 201}
-    except IntegrityError:
-        response.status_code = status.HTTP_409_CONFLICT
-        return {'status': "fail", 'code': 409, 'error': 'ALREADY_EXISTS'}
-    
-    
-    
+app.include_router(router)
