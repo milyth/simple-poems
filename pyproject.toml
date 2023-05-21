@@ -9,6 +9,8 @@ packages = [{include = "simple_poems"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 fastapi = {extras = ["all"], version = "^0.95.2"}
+python-dotenv = "^1.0.0"
+aiosqlite = "^0.19.0"
 
 
 [tool.poetry.group.dev.dependencies]
