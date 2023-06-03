@@ -45,7 +45,7 @@ async def upload(title: str, author: str, content: str):
 
 @router.get("/")
 async def home(request: Request):
-    return templates.TemplateResponse("index.html", context={'request': request, 'poems]': await listPoems()})
+    return templates.TemplateResponse("index.html", context={'request': request, 'poems': await listPoems()})
 
 @router.get("/upload")
 async def upload(request: Request):
